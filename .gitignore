@@ -46,6 +46,7 @@ nbactions.xml
 nb-configuration.xml
 
 out/
+test/
 
 # OS
 .DS_Store
