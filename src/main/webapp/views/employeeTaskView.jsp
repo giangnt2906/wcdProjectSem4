@@ -11,7 +11,6 @@
     <title>Employee</title>
 </head>
 <body>
-<jsp:include page="_menu.jsp"/>
 
 <h3>Employee Task</h3>
 

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<decorators defaultdir="/decorators">
+    <excludes>
+        <pattern>/api*</pattern>
+    </excludes>
+    <decorator name="admin-theme" page="admin-theme.jsp">
+        <pattern>/*</pattern>
+        <pattern>/product/*</pattern>
+        <pattern>/category/*</pattern>
+    </decorator>
+    <decorator name="basic-theme" page="basic-theme.jsp">
+        <pattern>/basic/*</pattern>
+    </decorator>
+</decorators>

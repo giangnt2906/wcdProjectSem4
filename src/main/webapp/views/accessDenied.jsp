@@ -11,7 +11,6 @@
     <title>Access Denied</title>
 </head>
 <body>
-<jsp:include page="_menu.jsp"/>
 
 <br/><br/>
 

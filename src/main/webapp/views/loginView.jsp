@@ -11,36 +11,47 @@
     <title>Login</title>
 </head>
 <body>
-<jsp:include page="_menu.jsp"/>
 
 <h3>Login Page</h3>
 
-<p style="color: red;">${errorMessage}</p>
+<div class="p-5">
+    <div class="text-center">
+        <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+    </div>
 
-<form method="POST" action="login">
-    <input type="hidden" name="redirectId" value="${param.redirectId}" />
-    <table>
-        <tr>
-            <td>User Name</td>
-            <td><label>
-                <input type="text" name="userName" value= "Username" />
-            </label></td>
-        </tr>
-        <tr>
-            <td>Password</td>
-            <td><label>
-                <input type="password" name="password" value= "Password" />
-            </label></td>
-        </tr>
+    <p style="color: red;">${errorMessage}</p>
 
-        <tr>
-            <td colspan ="2">
-                <input type="submit" value= "Submit" />
-                <a href="${pageContext.request.contextPath}/home">Cancel</a>
-            </td>
-        </tr>
-    </table>
-</form>
+    <form method="POST" action="login" class="user">
+        <input type="hidden" name="redirectId" value="${param.redirectId}" />
+        <div class="form-group">
+            <label for="exampleInputEmail"></label><input type="text" name="userName" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Username...">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword"></label><input type="password" name="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
+        </div>
+        <div class="form-group">
+            <input class="btn btn-primary btn-user btn-block" type="submit" value= "Login" />
+        </div>
+        <hr>
+        <a href="${pageContext.request.contextPath}/home" class="btn btn-warning btn-user btn-block">
+            <i class="fab fa-fw"></i> Cancel
+        </a>
+        <hr>
+        <a href="#" class="btn btn-google btn-user btn-block">
+            <i class="fab fa-google fa-fw"></i> Login with Google
+        </a>
+        <a href="#" class="btn btn-facebook btn-user btn-block">
+            <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
+        </a>
+    </form>
+    <hr>
+    <div class="text-center">
+        <a class="small" href="forgot-password.html">Forgot Password?</a>
+    </div>
+    <div class="text-center">
+        <a class="small" href="register.html">Create an Account!</a>
+    </div>
+</div>
 
 <p style="color:blue;">Login with:</p>
 

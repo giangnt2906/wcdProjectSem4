@@ -11,7 +11,6 @@
     <title>Home</title>
 </head>
 <body>
-<jsp:include page="_menu.jsp"/>
 
     <h3>Home Page</h3>
 </body>

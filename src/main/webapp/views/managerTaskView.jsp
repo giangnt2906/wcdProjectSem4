@@ -11,7 +11,6 @@
     <title>Manager</title>
 </head>
 <body>
-<jsp:include page="_menu.jsp"/>
 
 <h3>Manager Task</h3>
 

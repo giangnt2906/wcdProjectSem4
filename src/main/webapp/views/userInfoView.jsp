@@ -11,7 +11,6 @@
     <title>User Info</title>
 </head>
 <body>
-<jsp:include page="_menu.jsp"/>
 
 <p style="color: red;">${errorMessage}</p>
 
