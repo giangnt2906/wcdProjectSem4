@@ -107,4 +107,24 @@ public class CategoryDao {
         }
         return success;
     }
+
+    public List<Category> getNumberOfProducts() {
+        List<Category> list = new ArrayList<Category>();
+        String sql = "SELECT category.name as category, COUNT(product.id) AS products FROM product JOIN category ON product.categoryId = category.id GROUP BY category";
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                String category = rs.getString("category");
+                int products = rs.getInt("products");
+
+                Category p = new Category(category, products);
+                list.add(p);
+
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return list;
+    }
 }

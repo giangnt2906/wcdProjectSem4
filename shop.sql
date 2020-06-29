@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3307
--- Generation Time: Jun 29, 2020 at 09:46 AM
+-- Generation Time: Jun 29, 2020 at 03:37 PM
 -- Server version: 5.6.34-log
 -- PHP Version: 7.1.5
 
@@ -50,8 +50,7 @@ INSERT INTO `category` (`id`, `name`, `description`) VALUES
 (11, 'LG', 'San pham HQ'),
 (12, 'Oppo', 'Trung Quoc'),
 (13, 'Acer', 'San pham China'),
-(16, 'Cat 2', 'Test 5'),
-(17, 'Apple', 'San pham cua Steve');
+(16, 'Cat 2', 'Test 5');
 
 -- --------------------------------------------------------
 
@@ -94,15 +93,13 @@ CREATE TABLE `product` (
 INSERT INTO `product` (`id`, `name`, `quantity`, `price`, `categoryId`, `categoryName`) VALUES
 (1, 'Iphone 12', 20, 800, 2, NULL),
 (3, 'Oppo 5', 26, 700, 6, NULL),
-(4, 'Iphone 4', 20, 200, 1, NULL),
 (6, 'Iphone 13', 200, 1300, 3, NULL),
-(8, 'Samsung T5', 20, 1000, 1, NULL),
 (9, 'Samsung G3', 40, 5000, 3, NULL),
-(10, 'Nokia 6789', 80, 400, 4, NULL),
 (11, 'Edited Samsung J7', 666, 999, 9, NULL),
-(16, 'Iphone Xmas', 100, 100000, 1, NULL),
 (17, 'Thunderbird 2.0', 109, 969, 5, NULL),
-(19, 'Iphone Xmas', 109, 1000, 17, NULL);
+(20, 'Samsung T5', 10, 1000, 2, NULL),
+(21, 'Name 444', 10, 1000, 3, NULL),
+(22, 'giga', 10, 1000, 6, NULL);
 
 -- --------------------------------------------------------
 
@@ -198,7 +195,7 @@ ALTER TABLE `gender_table`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 --
 -- AUTO_INCREMENT for table `roles_table`
 --

@@ -5,6 +5,22 @@ public class Category {
     private String name;
     private String desc;
 
+    //
+    private int numberOfProducts;
+
+    public int getNumberOfProducts() {
+        return numberOfProducts;
+    }
+
+    public void setNumberOfProducts(int numberOfProducts) {
+        this.numberOfProducts = numberOfProducts;
+    }
+
+    public Category(String name, int numberOfProducts) {
+        this.name = name;
+        this.numberOfProducts = numberOfProducts;
+    }
+
     public Category() {
     }
 

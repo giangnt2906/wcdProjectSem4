@@ -21,6 +21,14 @@ public class SecurityConfig {
 
         urlPatterns1.add("/userInfo");
         urlPatterns1.add("/employeeTask");
+        urlPatterns1.add("/product/productList");
+        urlPatterns1.add("/product/productAdd");
+        urlPatterns1.add("/product/productEdit");
+        urlPatterns1.add("/product/productDelete");
+        urlPatterns1.add("/category/categoryList");
+        urlPatterns1.add("/category/categoryAdd");
+        urlPatterns1.add("/category/categoryEdit");
+        urlPatterns1.add("/category/categoryDelete");
 
         mapConfig.put(ROLE_EMPLOYEE, urlPatterns1);
 
@@ -29,6 +37,17 @@ public class SecurityConfig {
 
         urlPatterns2.add("/userInfo");
         urlPatterns2.add("/managerTask");
+        urlPatterns2.add("/employeeTask");
+        urlPatterns2.add("/category/categoryList");
+        urlPatterns2.add("/category/categoryAdd");
+        urlPatterns2.add("/category/categoryEdit");
+        urlPatterns2.add("/category/categoryDelete");
+        urlPatterns2.add("/product/productList");
+        urlPatterns2.add("/product/productAdd");
+        urlPatterns2.add("/product/productEdit");
+        urlPatterns2.add("/product/productDelete");
+        urlPatterns2.add("/userAdd");
+        urlPatterns2.add("/userManage");
 
         mapConfig.put(ROLE_MANAGER, urlPatterns2);
     }
