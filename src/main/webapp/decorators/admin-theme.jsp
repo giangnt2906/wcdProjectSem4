@@ -19,6 +19,8 @@
     <dec:head />
 </head>
 <body id="page-top">
+
+    <!-- Page Wrapper -->
     <div id="wrapper">
         <%@ include file="../data/sidebar-admin.jsp"%>
 
@@ -33,6 +35,11 @@
             </div>
         </div>
     </div>
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
 
 <%@ include file="../data/footer-admin.jsp"%>
 <%@ include file="../tags/js.jsp"%>

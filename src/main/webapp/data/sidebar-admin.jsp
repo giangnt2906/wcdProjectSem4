@@ -75,6 +75,14 @@
             <i class="fas fa-fw fa-street-view"></i>
             <span>Manager Task</span>
         </a>
+        <a class="nav-link" href="${pageContext.request.contextPath}/userAdd">
+            <i class="fas fa-fw fa-user-plus"></i>
+            <span>Create User</span>
+        </a>
+        <a class="nav-link" href="${pageContext.request.contextPath}/userManage">
+            <i class="fas fa-fw fa-users"></i>
+            <span>List User</span>
+        </a>
     </li>
 
     <!-- Divider -->

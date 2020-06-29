@@ -34,7 +34,7 @@
         </div>
         <hr>
         <a href="${pageContext.request.contextPath}/home" class="btn btn-warning btn-user btn-block">
-            <i class="fab fa-fw"></i> Cancel
+             Cancel
         </a>
         <hr>
         <a href="#" class="btn btn-google btn-user btn-block">
@@ -52,10 +52,5 @@
         <a class="small" href="register.html">Create an Account!</a>
     </div>
 </div>
-
-<p style="color:blue;">Login with:</p>
-
-employee1/123 <br>
-manager1/123
 </body>
 </html>

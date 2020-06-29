@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3307
--- Generation Time: Jun 28, 2020 at 10:41 AM
+-- Generation Time: Jun 29, 2020 at 09:46 AM
 -- Server version: 5.6.34-log
 -- PHP Version: 7.1.5
 
@@ -56,6 +56,25 @@ INSERT INTO `category` (`id`, `name`, `description`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `gender_table`
+--
+
+CREATE TABLE `gender_table` (
+  `id` int(11) NOT NULL,
+  `name` varchar(127) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `gender_table`
+--
+
+INSERT INTO `gender_table` (`id`, `name`) VALUES
+(1, 'MALE'),
+(2, 'FEMALE');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `product`
 --
 
@@ -85,6 +104,48 @@ INSERT INTO `product` (`id`, `name`, `quantity`, `price`, `categoryId`, `categor
 (17, 'Thunderbird 2.0', 109, 969, 5, NULL),
 (19, 'Iphone Xmas', 109, 1000, 17, NULL);
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `roles_table`
+--
+
+CREATE TABLE `roles_table` (
+  `id` int(11) NOT NULL,
+  `name` varchar(127) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `roles_table`
+--
+
+INSERT INTO `roles_table` (`id`, `name`) VALUES
+(1, 'MANAGER'),
+(2, 'EMPLOYEE');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_table`
+--
+
+CREATE TABLE `user_table` (
+  `id` int(11) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `gender` varchar(127) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `roles` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `user_table`
+--
+
+INSERT INTO `user_table` (`id`, `username`, `gender`, `password`, `roles`) VALUES
+(1, 'employee1', 'MALE', '123', 'EMPLOYEE'),
+(2, 'manager2', 'FEMALE', '1234', 'MANAGER'),
+(5, 'giangnt@gmail', 'MALE', 'abcd', 'MANAGER');
+
 --
 -- Indexes for dumped tables
 --
@@ -96,9 +157,27 @@ ALTER TABLE `category`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `gender_table`
+--
+ALTER TABLE `gender_table`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `product`
 --
 ALTER TABLE `product`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `roles_table`
+--
+ALTER TABLE `roles_table`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `user_table`
+--
+ALTER TABLE `user_table`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -109,12 +188,27 @@ ALTER TABLE `product`
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+--
+-- AUTO_INCREMENT for table `gender_table`
+--
+ALTER TABLE `gender_table`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;COMMIT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+--
+-- AUTO_INCREMENT for table `roles_table`
+--
+ALTER TABLE `roles_table`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `user_table`
+--
+ALTER TABLE `user_table`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
