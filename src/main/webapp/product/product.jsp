@@ -23,6 +23,7 @@
 
     <!-- Custom styles for this template-->
     <link href="../css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="../css/imageStyle.css" rel="stylesheet">
 </head>
 <body>
 <h1>
@@ -56,6 +57,15 @@
         </label>
     </label>
     <br/><br/>
+    <div>
+        <label>
+            Images:
+        </label>
+        <div id="upload_widget" class="btn btn-primary">Upload files</div>
+        <input type="hidden" id="strImageUrl" name="strImageUrl" />
+        <div class="images"></div>
+    </div>
+    <br/><br/>
     <label for="categoryId">Category:</label>
     <br/><br/>
     <select id="categoryId" name="categoryId">
@@ -83,5 +93,53 @@
 <!-- Page level custom scripts -->
 <script src="../js/demo/chart-area-demo.js"></script>
 <script src="../js/demo/chart-pie-demo.js"></script>
+<script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript"></script>
+<script src="../js/imageScripts.js"></script>
+<%--<script>
+    var strUrl = $('#strImageUrl').val();
+    var arrUrl = [];
+    if (strUrl != null && strUrl != '') {
+        var str = strUrl.substring(1, strUrl.length);
+        arrUrl = str.split(',');
+    }
+
+    $.each(arrUrl, function (i, val) {
+        $('.images').prepend($('<img>', { id: 'theProductImg', src: val }))
+    })
+
+
+    //var i = arrUrl.length;
+
+    //document.getElementById("filesCount").innerHTML = i + ' files';
+    var myWidget = cloudinary.createUploadWidget({
+            cloudName: 'debutwyfp',
+            uploadPreset: 'ml_default'
+        }, (error, result) => {
+            if (!error && result && result.event === "success") {
+                //console.log('Done! Here is the image info: ', result.info.secure_url);
+                strUrl = strUrl + ',' + result.info.secure_url;
+                $('#strImageUrl').val(strUrl);
+                //$('.images').append("<img id='theImg' src='" + result.info.secure_url + "'/>")
+                $('.images').prepend($('<img>', { id: 'theProductImg', src: result.info.secure_url }))
+                //image(result.info.secure_url);
+                //i++;
+                //$('#filesCount').val(i)
+                //document.getElementById("filesCount").innerHTML = i + ' files';
+            }
+        }
+    )
+
+    function image(url) {
+        var image = document.createElement("IMG");
+        image.alt = "Alt information for image";
+        image.setAttribute('class', 'photo');
+        image.src = url;
+        $('.images').html(image);
+    }
+
+    document.getElementById("upload_widget").addEventListener("click", function () {
+        myWidget.open();
+    }, false);
+</script>--%>
 </body>
 </html>
