@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3307
--- Generation Time: Jun 29, 2020 at 03:37 PM
+-- Generation Time: Jul 08, 2020 at 05:34 AM
 -- Server version: 5.6.34-log
 -- PHP Version: 7.1.5
 
@@ -50,7 +50,7 @@ INSERT INTO `category` (`id`, `name`, `description`) VALUES
 (11, 'LG', 'San pham HQ'),
 (12, 'Oppo', 'Trung Quoc'),
 (13, 'Acer', 'San pham China'),
-(16, 'Cat 2', 'Test 5');
+(17, 'Iphone ', 'Trung Quoc');
 
 -- --------------------------------------------------------
 
@@ -83,23 +83,15 @@ CREATE TABLE `product` (
   `quantity` int(11) DEFAULT NULL,
   `price` int(11) DEFAULT NULL,
   `categoryId` int(11) DEFAULT NULL,
-  `categoryName` varchar(255) DEFAULT NULL
+  `image_url` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `product`
 --
 
-INSERT INTO `product` (`id`, `name`, `quantity`, `price`, `categoryId`, `categoryName`) VALUES
-(1, 'Iphone 12', 20, 800, 2, NULL),
-(3, 'Oppo 5', 26, 700, 6, NULL),
-(6, 'Iphone 13', 200, 1300, 3, NULL),
-(9, 'Samsung G3', 40, 5000, 3, NULL),
-(11, 'Edited Samsung J7', 666, 999, 9, NULL),
-(17, 'Thunderbird 2.0', 109, 969, 5, NULL),
-(20, 'Samsung T5', 10, 1000, 2, NULL),
-(21, 'Name 444', 10, 1000, 3, NULL),
-(22, 'giga', 10, 1000, 6, NULL);
+INSERT INTO `product` (`id`, `name`, `quantity`, `price`, `categoryId`, `image_url`) VALUES
+(25, 'Iphone Xmas', 10, 1000, 3, ',https://res.cloudinary.com/debutwyfp/image/upload/v1594185253/thumb_11-ProMAX_2-1_gddpqc.jpg,https://res.cloudinary.com/debutwyfp/image/upload/v1594185253/iphone-xr-64gb-quoc-te-moi-95-99_nwqts2.jpg');
 
 -- --------------------------------------------------------
 
@@ -195,7 +187,7 @@ ALTER TABLE `gender_table`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 --
 -- AUTO_INCREMENT for table `roles_table`
 --

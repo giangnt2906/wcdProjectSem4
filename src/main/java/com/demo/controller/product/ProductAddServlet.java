@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @WebServlet(name = "ProductAddServlet", urlPatterns = "/product/productAdd")
@@ -27,14 +29,18 @@ public class ProductAddServlet extends HttpServlet {
         int quantity = Integer.parseInt(request.getParameter("quantity"));
         int categoryId = Integer.parseInt(request.getParameter("categoryId"));
         //
+        String str_image_urls = request.getParameter("strImageUrl");
+        //ArrayList<String> img_urls = new ArrayList<String>(Arrays.asList(str_image_urls.split(",")));
+        //
         Product p = new Product();
         p.setName(name);
         p.setQuantity(quantity);
         p.setPrice(price);
         p.setCategoryId(categoryId);
+        p.setImg_urls(str_image_urls);
         productDao.insertProduct(p);
         //
-        request.getRequestDispatcher("productList.jsp").forward(request, response);
+        response.sendRedirect("productList");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -23,25 +23,32 @@
 
     <!-- Custom styles for this template-->
     <link href="../css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="../css/imageStyle.css" rel="stylesheet">
 </head>
 <body>
 <h1>
     Add new Product
 </h1>
-<form method="POST" action="productAdd" enctype="multipart/form-data">
-    <table>
+<form method="post" action="productAdd" id="addProductForm">
+    <table align="center">
         <tr>
             <td>Product Name:</td>
-            <td><input type="text" name="name" value="Product" required="required"></td>
+            <td><label>
+                <input type="text" name="name" value="Product" required="required">
+            </label></td>
         </tr>
         <tr>
             <td>Price:</td>
-            <td><input type="text" name="price" value="1000"></td>
+            <td><label>
+                <input type="text" name="price" value="1000">
+            </label></td>
         </tr>
         <tr>
             <td>Quantity:</td>
             <td>
-                <input type="text" name="quantity" value="10">
+                <label>
+                    <input type="text" name="quantity" value="10">
+                </label>
             </td>
         </tr>
         <tr>
@@ -57,11 +64,27 @@
             </td>
         </tr>
         <tr>
+            <td>
+                Photo of Product:
+            </td>
+            <td>
+                <div id="upload_widget" class="btn btn-primary">Upload files</div>
+                <label for="strImageUrl"></label><input type="text" id="strImageUrl" name="strImageUrl" />
+                <div class="images"></div>
+            </td>
+        </tr>
+        <tr>
             <td><input type="submit" name="submitButton" value="Add Product"></td>
-            <td><input type="reset" value="Clear" /></td>
+            <td><input type="reset" onclick="resetFunction()" value="Clear" /></td>
         </tr>
     </table>
 </form>
+
+<script>
+    function resetFunction() {
+        document.getElementById("addProductForm").reset();
+    }
+</script>
 
 <!-- Bootstrap core JavaScript-->
 <script src="../vendor/jquery/jquery.min.js"></script>
@@ -79,5 +102,7 @@
 <!-- Page level custom scripts -->
 <script src="../js/demo/chart-area-demo.js"></script>
 <script src="../js/demo/chart-pie-demo.js"></script>
+<script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript"></script>
+<script src="../js/imageScripts.js"></script>
 </body>
 </html>

@@ -3,11 +3,9 @@ package com.demo.dao;
 import com.demo.model.Product;
 import com.demo.utils.ConnectionUtils;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class ProductDao {
@@ -51,7 +49,7 @@ public class ProductDao {
     }
 
     public int insertProduct(Product p) {
-        String sql = "INSERT INTO product (name, price, quantity, categoryID) VALUES(?,?,?,?)";
+        String sql = "INSERT INTO product (name, price, quantity, categoryID, image_url) VALUES(?,?,?,?,?)";
         int success = 0;
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
@@ -59,6 +57,9 @@ public class ProductDao {
             ps.setInt(2, p.getPrice());
             ps.setInt(3, p.getQuantity());
             ps.setInt(4, p.getCategoryId());
+            //
+            //Array array = connection.createArrayOf("VARCHAR", p.getImage_urls().toArray());
+            ps.setString(5, p.getImg_urls());
             success = ps.executeUpdate();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -113,7 +114,12 @@ public class ProductDao {
                 int quantity = rs.getInt("product.quantity");
                 String categoryName = rs.getString("category.name");
 
-                Product p = new Product(id, name, price, quantity, categoryName);
+                //
+                String img_urls = rs.getString("image_url");
+                ArrayList<String> list_urls = new ArrayList<String>(Arrays.asList(img_urls.split(",")));
+                list_urls.remove(0);
+
+                Product p = new Product(id, name, price, quantity, categoryName, list_urls);
                 list.add(p);
 
             }
