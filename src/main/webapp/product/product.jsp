@@ -28,43 +28,39 @@
 <h1>
     Add new Product
 </h1>
-<form method="POST" action="productAdd">
-    <label>
-        <label>
-            Name:
-        </label>
-        <label>
-            <input type="text" name="name" value="Name">
-        </label>
-    </label>
-    <br/><br/>
-    <label>
-        <label>
-            Price:
-        </label>
-        <label>
-            <input type="text" name="price" value="1000">
-        </label>
-    </label>
-    <br/><br/>
-    <label>
-        <label>
-            Quantity:
-        </label>
-        <label>
-            <input type="text" name="quantity" value="10">
-        </label>
-    </label>
-    <br/><br/>
-    <label for="categoryId">Category:</label>
-    <br/><br/>
-    <select id="categoryId" name="categoryId">
-        <c:forEach var="item" items="${requestScope.categoryNames}">
-            <option value="${item.id}">${item.name}</option>
-        </c:forEach>
-    </select>
-    <br/><br/>
-    <input type="submit" name="submitButton" value="Add Product">
+<form method="POST" action="productAdd" enctype="multipart/form-data">
+    <table>
+        <tr>
+            <td>Product Name:</td>
+            <td><input type="text" name="name" value="Product" required="required"></td>
+        </tr>
+        <tr>
+            <td>Price:</td>
+            <td><input type="text" name="price" value="1000"></td>
+        </tr>
+        <tr>
+            <td>Quantity:</td>
+            <td>
+                <input type="text" name="quantity" value="10">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="categoryId">Category:</label>
+            </td>
+            <td>
+                <select id="categoryId" name="categoryId">
+                    <c:forEach var="item" items="${requestScope.categoryNames}">
+                        <option value="${item.id}">${item.name}</option>
+                    </c:forEach>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td><input type="submit" name="submitButton" value="Add Product"></td>
+            <td><input type="reset" value="Clear" /></td>
+        </tr>
+    </table>
 </form>
 
 <!-- Bootstrap core JavaScript-->

@@ -48,6 +48,8 @@
 <br>
 <a href='${pageContext.request.contextPath}/product/productAdd'>Add New Product</a>
 <br>
+<p style="color: red;"><%=request.getAttribute("bonusMessage")%></p>
+<br><br/>
 <table>
     <tr>
         <th>ID</th>

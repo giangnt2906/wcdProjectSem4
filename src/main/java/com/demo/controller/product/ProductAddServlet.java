@@ -15,6 +15,7 @@ import java.util.List;
 
 @WebServlet(name = "ProductAddServlet", urlPatterns = "/product/productAdd")
 public class ProductAddServlet extends HttpServlet {
+
     private CategoryDao dao = new CategoryDao();
     private ProductDao productDao = new ProductDao();
 
@@ -33,7 +34,7 @@ public class ProductAddServlet extends HttpServlet {
         p.setCategoryId(categoryId);
         productDao.insertProduct(p);
         //
-        response.sendRedirect("productList");
+        request.getRequestDispatcher("productList.jsp").forward(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
