@@ -2,6 +2,7 @@ package com.demo.controller.product;
 
 import com.demo.dao.CategoryDao;
 import com.demo.dao.ProductDao;
+import com.demo.helper.ValidateHelper;
 import com.demo.model.Category;
 import com.demo.model.Product;
 
@@ -11,6 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 @WebServlet(name = "ProductEditServlet", urlPatterns = "/product/productEdit")
@@ -20,24 +23,36 @@ public class ProductEditServlet extends HttpServlet {
     private CategoryDao categoryDao = new CategoryDao();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //product
-        Product p = new Product();
-        //set update
-        int id = Integer.parseInt(request.getParameter("id"));
+        ValidateHelper validateHelper = new ValidateHelper();
+        HashMap<String, ArrayList<String>> errors = validateHelper.validateProduct(request);
         String name = request.getParameter("name");
         String priceString = request.getParameter("price");
         int price = Integer.parseInt(priceString);
         int quantity = Integer.parseInt(request.getParameter("quantity"));
         int categoryId = Integer.parseInt(request.getParameter("categoryId"));
-        //
-        p.setId(id);
-        p.setName(name);
-        p.setPrice(price);
-        p.setCategoryId(categoryId);
-        p.setQuantity(quantity);
-        dao.updateProduct(p);
-        //
-        response.sendRedirect("productList");
+
+        if(errors.size() > 0) {
+            request.setAttribute("errors", errors);
+            request.setAttribute("name", name);
+            request.setAttribute("price", priceString);
+            request.setAttribute("quantity", quantity);
+            request.setAttribute("categoryId", categoryId);
+            request.getRequestDispatcher("/product/productEdit.jsp").forward(request, response);
+        } else {
+            //product
+            Product p = new Product();
+            //set update
+            int id = Integer.parseInt(request.getParameter("id"));
+            //
+            p.setId(id);
+            p.setName(name);
+            p.setPrice(price);
+            p.setCategoryId(categoryId);
+            p.setQuantity(quantity);
+            dao.updateProduct(p);
+            //
+            response.sendRedirect("productList");
+        }
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
