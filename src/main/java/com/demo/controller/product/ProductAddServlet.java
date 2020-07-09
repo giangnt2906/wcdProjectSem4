@@ -15,10 +15,12 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Arrays;
 import java.util.List;
 
 @WebServlet(name = "ProductAddServlet", urlPatterns = "/product/productAdd")
 public class ProductAddServlet extends HttpServlet {
+
     private CategoryDao dao = new CategoryDao();
     private ProductDao productDao = new ProductDao();
 

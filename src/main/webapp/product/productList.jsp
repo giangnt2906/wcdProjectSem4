@@ -55,6 +55,9 @@
         <th>Price</th>
         <th>Quantity</th>
         <th>Category</th>
+        <th>
+            Product Image
+        </th>
         <th>Edit</th>
         <th>Delete</th>
     </tr>
@@ -65,6 +68,14 @@
             <td>${item.price}</td>
             <td>${item.quantity}</td>
             <td>${item.categoryName}</td>
+            <td>
+                <c:forEach var="url" items="${item.image_urls}" >
+                    <div>
+                        <img src="${url}" alt="Image" width="200" height="300">
+                    </div>
+                </c:forEach>
+
+            </td>
             <th>
                 <a href='${pageContext.request.contextPath}/product/productEdit?id=${item.id}'>Edit</a>
             </th>
