@@ -1,4 +1,6 @@
-<%--
+<%@ page import="java.util.HashMap" %>
+<%@ page import="java.util.Map" %>
+<%@ page import="java.util.ArrayList" %><%--
   Created by IntelliJ IDEA.
   User: GIANG
   Date: 6/22/2020
@@ -7,6 +9,9 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+    HashMap<String, ArrayList<String>> errors = (HashMap<String, ArrayList<String>>) request.getAttribute("errors");
+%>
 <html>
 <head>
     <title>Product</title>
@@ -19,75 +24,118 @@
 
     <!-- Custom fonts for this template-->
     <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+          rel="stylesheet">
 
     <!-- Custom styles for this template-->
     <link href="../css/sb-admin-2.min.css" rel="stylesheet">
     <link href="../css/imageStyle.css" rel="stylesheet">
+    <style>
+        .error {
+            color: red;
+            font-size: small;
+        }
+    </style>
 </head>
 <body>
 <h1>
     Add new Product
 </h1>
-<form method="post" action="productAdd" id="addProductForm">
-    <table align="center">
-        <tr>
-            <td>Product Name:</td>
-            <td><label>
-                <input type="text" name="name" value="Product" required="required">
-            </label></td>
-        </tr>
-        <tr>
-            <td>Price:</td>
-            <td><label>
-                <input type="text" name="price" value="1000">
-            </label></td>
-        </tr>
-        <tr>
-            <td>Quantity:</td>
-            <td>
-                <label>
-                    <input type="text" name="quantity" value="10">
-                </label>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <label for="categoryId">Category:</label>
-            </td>
-            <td>
-                <select id="categoryId" name="categoryId">
-                    <c:forEach var="item" items="${requestScope.categoryNames}">
-                        <option value="${item.id}">${item.name}</option>
-                    </c:forEach>
-                </select>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Photo of Product:
-            </td>
-            <td>
-                <div id="upload_widget" class="btn btn-primary">Upload files</div>
-                <label for="strImageUrl"></label><input type="text" id="strImageUrl" name="strImageUrl" />
-                <div class="images"></div>
-            </td>
-        </tr>
-        <tr>
-            <td><input type="submit" name="submitButton" value="Add Product"></td>
-            <td><input type="reset" onclick="resetFunction()" value="Clear" /></td>
-        </tr>
-    </table>
+<%
+    if (errors != null && errors.size() > 0) {
+%>
+<span class="error">Please fix errors below and try again!</span>
+<%
+    }
+%>
+<form id="product-form" name="product-form" method="POST" action="productAdd">
+    <div>
+        <label>
+            Name:
+        </label>
+        <div>
+            <input type="text" name="name" value="${requestScope.name}"/>
+        </div>
+        <div>
+            <%
+                if (errors != null && errors.containsKey("name")) {
+            %>
+            <p class="error">* <%=errors.get("name").get(0)%>
+            </p>
+            <%
+                }
+            %>
+        </div>
+    </div>
+    <br/><br/>
+    <div>
+        <label>
+            Price:
+        </label>
+        <div>
+            <input type="text" name="price" value="${requestScope.price}"/>
+        </div>
+        <div>
+            <%
+                if (errors != null && errors.containsKey("price")) {
+            %>
+            <p class="error">* <%=errors.get("price").get(0)%>
+            </p>
+            <%
+                }
+            %>
+        </div>
+    </div>
+    <br/><br/>
+    <div>
+        <label>
+            Quantity:
+        </label>
+        <div>
+            <input type="text" name="quantity" value="${requestScope.quantity}"/>
+        </div>
+        <div>
+            <%
+                if (errors != null && errors.containsKey("quantity")) {
+            %>
+            <p class="error">* <%=errors.get("quantity").get(0)%>
+            </p>
+            <%
+                }
+            %>
+        </div>
+    </div>
+    <br/><br/>
+    <div>
+        <label>
+            Images:
+        </label>
+        <div id="upload_widget" class="btn btn-primary">Upload files</div>
+        <input type="hidden" id="strImageUrl" name="strImageUrl"/>
+        <div class="images"></div>
+    </div>
+    <br/><br/>
+    <label for="categoryId">Category:</label>
+    <br/><br/>
+    <select id="categoryId" name="categoryId">
+        <c:forEach var="item" items="${requestScope.categoryNames}">
+            <option value="${item.id}">${item.name}</option>
+        </c:forEach>
+    </select>
+    <br/><br/>
+    <input type="submit" name="submitButton" value="Add Product">
 </form>
 
 <script>
     function resetFunction() {
-        document.getElementById("addProductForm").reset();
+        document.getElementById("product-form").reset();
     }
 </script>
 
 <!-- Bootstrap core JavaScript-->
 <script src="../vendor/jquery/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
 <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 <!-- Core plugin JavaScript-->
@@ -104,5 +152,43 @@
 <script src="../js/demo/chart-pie-demo.js"></script>
 <script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript"></script>
 <script src="../js/imageScripts.js"></script>
+<script>
+    $('#product-form').validate({
+        rules: {
+            name: {
+                required: true,
+                pattern: '[a-zsA-Z]+',
+                minLength: 5,
+                maxLength: 10
+            },
+            price: {
+                required: true,
+                min: 1,
+                max: 1800
+            },
+            quantity: {
+                required: true,
+                min: 8,
+                max: 18
+            }
+        },
+        messages: {
+            name: {
+                required: 'Name is required!',
+                pattern: 'Invalid format'
+            },
+            price: {
+                required: 'Price is required!',
+                min: 'Price must be more than 1',
+                max: 'Price must be less than 1800'
+            },
+            quantity: {
+                required: 'Quantity is required!',
+                min: 'Quantity must be more than 8',
+                max: 'Quantity must be less than 18'
+            }
+        }
+    })
+</script>
 </body>
 </html>
