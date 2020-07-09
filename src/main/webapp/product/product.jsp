@@ -1,4 +1,6 @@
-<%--
+<%@ page import="java.util.HashMap" %>
+<%@ page import="java.util.Map" %>
+<%@ page import="java.util.ArrayList" %><%--
   Created by IntelliJ IDEA.
   User: GIANG
   Date: 6/22/2020
@@ -7,6 +9,9 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+    HashMap<String, ArrayList<String>> errors = (HashMap<String, ArrayList<String>>) request.getAttribute("errors");
+%>
 <html>
 <head>
     <title>Product</title>
@@ -19,50 +24,94 @@
 
     <!-- Custom fonts for this template-->
     <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+          rel="stylesheet">
 
     <!-- Custom styles for this template-->
     <link href="../css/sb-admin-2.min.css" rel="stylesheet">
     <link href="../css/imageStyle.css" rel="stylesheet">
+    <style>
+        .error {
+            color: red;
+            font-size: small;
+        }
+    </style>
 </head>
 <body>
 <h1>
     Add new Product
 </h1>
-<form method="POST" action="productAdd">
-    <label>
+<%
+    if (errors != null && errors.size() > 0) {
+%>
+<span class="error">Please fix errors below and try again!</span>
+<%
+    }
+%>
+<form id="product-form" name="product-form" method="POST" action="productAdd">
+    <div>
         <label>
             Name:
         </label>
-        <label>
-            <input type="text" name="name" value="Name">
-        </label>
-    </label>
+        <div>
+            <input type="text" name="name" value="${requestScope.name}"/>
+        </div>
+        <div>
+            <%
+                if (errors != null && errors.containsKey("name")) {
+            %>
+            <p class="error">* <%=errors.get("name").get(0)%>
+            </p>
+            <%
+                }
+            %>
+        </div>
+    </div>
     <br/><br/>
-    <label>
+    <div>
         <label>
             Price:
         </label>
-        <label>
-            <input type="text" name="price" value="1000">
-        </label>
-    </label>
+        <div>
+            <input type="text" name="price" value="${requestScope.price}"/>
+        </div>
+        <div>
+            <%
+                if (errors != null && errors.containsKey("price")) {
+            %>
+            <p class="error">* <%=errors.get("price").get(0)%>
+            </p>
+            <%
+                }
+            %>
+        </div>
+    </div>
     <br/><br/>
-    <label>
+    <div>
         <label>
             Quantity:
         </label>
-        <label>
-            <input type="text" name="quantity" value="10">
-        </label>
-    </label>
+        <div>
+            <input type="text" name="quantity" value="${requestScope.quantity}"/>
+        </div>
+        <div>
+            <%
+                if (errors != null && errors.containsKey("quantity")) {
+            %>
+            <p class="error">* <%=errors.get("quantity").get(0)%>
+            </p>
+            <%
+                }
+            %>
+        </div>
+    </div>
     <br/><br/>
     <div>
         <label>
             Images:
         </label>
         <div id="upload_widget" class="btn btn-primary">Upload files</div>
-        <input type="hidden" id="strImageUrl" name="strImageUrl" />
+        <input type="hidden" id="strImageUrl" name="strImageUrl"/>
         <div class="images"></div>
     </div>
     <br/><br/>
@@ -79,6 +128,8 @@
 
 <!-- Bootstrap core JavaScript-->
 <script src="../vendor/jquery/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
 <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 <!-- Core plugin JavaScript-->
@@ -95,51 +146,43 @@
 <script src="../js/demo/chart-pie-demo.js"></script>
 <script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript"></script>
 <script src="../js/imageScripts.js"></script>
-<%--<script>
-    var strUrl = $('#strImageUrl').val();
-    var arrUrl = [];
-    if (strUrl != null && strUrl != '') {
-        var str = strUrl.substring(1, strUrl.length);
-        arrUrl = str.split(',');
-    }
-
-    $.each(arrUrl, function (i, val) {
-        $('.images').prepend($('<img>', { id: 'theProductImg', src: val }))
-    })
-
-
-    //var i = arrUrl.length;
-
-    //document.getElementById("filesCount").innerHTML = i + ' files';
-    var myWidget = cloudinary.createUploadWidget({
-            cloudName: 'debutwyfp',
-            uploadPreset: 'ml_default'
-        }, (error, result) => {
-            if (!error && result && result.event === "success") {
-                //console.log('Done! Here is the image info: ', result.info.secure_url);
-                strUrl = strUrl + ',' + result.info.secure_url;
-                $('#strImageUrl').val(strUrl);
-                //$('.images').append("<img id='theImg' src='" + result.info.secure_url + "'/>")
-                $('.images').prepend($('<img>', { id: 'theProductImg', src: result.info.secure_url }))
-                //image(result.info.secure_url);
-                //i++;
-                //$('#filesCount').val(i)
-                //document.getElementById("filesCount").innerHTML = i + ' files';
+<script>
+    $('#product-form').validate({
+        rules: {
+            name: {
+                required: true,
+                pattern: '[a-zsA-Z]+',
+                minLength: 5,
+                maxLength: 10
+            },
+            price: {
+                required: true,
+                min: 1,
+                max: 1800
+            },
+            quantity: {
+                required: true,
+                min: 8,
+                max: 18
+            }
+        },
+        messages: {
+            name: {
+                required: 'Name is required!',
+                pattern: 'Invalid format'
+            },
+            price: {
+                required: 'Price is required!',
+                min: 'Price must be more than 1',
+                max: 'Price must be less than 1800'
+            },
+            quantity: {
+                required: 'Quantity is required!',
+                min: 'Quantity must be more than 8',
+                max: 'Quantity must be less than 18'
             }
         }
-    )
-
-    function image(url) {
-        var image = document.createElement("IMG");
-        image.alt = "Alt information for image";
-        image.setAttribute('class', 'photo');
-        image.src = url;
-        $('.images').html(image);
-    }
-
-    document.getElementById("upload_widget").addEventListener("click", function () {
-        myWidget.open();
-    }, false);
-</script>--%>
+    })
+</script>
 </body>
 </html>
