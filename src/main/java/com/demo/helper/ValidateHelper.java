@@ -10,16 +10,10 @@ public class ValidateHelper {
         String name = request.getParameter("name");
         if (name == null || name.isEmpty()) {
             ArrayList<String> nameErrors = new ArrayList<>();
-            if (errors.containsKey("name")) {
-                nameErrors = errors.get("name");
-            }
             nameErrors.add("Name is required!");
             errors.put("name", nameErrors);
         } else if (name.length() < 5 || name.length() > 20) {
             ArrayList<String> nameErrors = new ArrayList<>();
-            if (errors.containsKey("name")) {
-                nameErrors = errors.get("name");
-            }
             nameErrors.add("Name must be 5 to 20 character!");
             errors.put("name", nameErrors);
         }
