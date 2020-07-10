@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebFilter(filterName = "SecurityFilter", urlPatterns = "/*")
+@WebFilter(filterName = "SecurityFilter", urlPatterns = "/backend/*")
 public class SecurityFilter implements Filter {
     public SecurityFilter() {
     }
@@ -30,7 +30,7 @@ public class SecurityFilter implements Filter {
         // (Sau khi đăng nhập thành công).
         UserAccount loginedUser = AppUtils.getLoginedUser(request.getSession());
 
-        if (servletPath.equals("/login")) {
+        if (servletPath.equals("/backend/login")) {
 
             // them vao login thi  vao trang userInfo neu da login
             if (loginedUser != null) {
@@ -69,7 +69,7 @@ public class SecurityFilter implements Filter {
                 // Lưu trữ trang hiện tại để redirect đến sau khi đăng nhập thành công.
                 int redirectId = AppUtils.storeRedirectAfterLoginUrl(request.getSession(), requestUri);
 
-                response.sendRedirect(wrapRequest.getContextPath() + "/login?redirectId=" + redirectId);
+                response.sendRedirect(wrapRequest.getContextPath() + "/backend/login?redirectId=" + redirectId);
                 return;
             }
 
@@ -78,7 +78,7 @@ public class SecurityFilter implements Filter {
             if (!hasPermission) {
 
                 RequestDispatcher dispatcher //
-                        = request.getServletContext().getRequestDispatcher("/views/accessDenied.jsp");
+                        = request.getServletContext().getRequestDispatcher("/backend/views/accessDenied.jsp");
 
                 dispatcher.forward(request, response);
                 return;
