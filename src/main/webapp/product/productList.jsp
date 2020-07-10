@@ -71,7 +71,7 @@
             <td>
                 <c:forEach var="url" items="${item.image_urls}" >
                     <div>
-                        <img src="${url}" alt="Image" width="200" height="300">
+                        <img src="${url}" alt="Image" width="50" height="50">
                     </div>
                 </c:forEach>
 

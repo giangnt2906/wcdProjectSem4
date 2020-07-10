@@ -157,9 +157,9 @@
         rules: {
             name: {
                 required: true,
-                pattern: '[a-zsA-Z]+',
+                pattern: '[a-zA-Z0-9]+',
                 minLength: 5,
-                maxLength: 10
+                maxLength: 100
             },
             price: {
                 required: true,
@@ -168,8 +168,8 @@
             },
             quantity: {
                 required: true,
-                min: 8,
-                max: 18
+                min: 1,
+                max: 100
             }
         },
         messages: {

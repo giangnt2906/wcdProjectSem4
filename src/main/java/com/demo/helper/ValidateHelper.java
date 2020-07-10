@@ -1,49 +1,65 @@
-package com.testPrepare.helper;
-
-import com.testPrepare.entity.Student;
+package com.demo.helper;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ValidateHelper {
-    public static HashMap<String, ArrayList<String>> validateStudent(HttpServletRequest request) {
+    public static HashMap<String, ArrayList<String>> validateProduct(HttpServletRequest request) {
         HashMap<String, ArrayList<String>> errors = new HashMap<>();
-        String username = request.getParameter("username");
-        if (username == null || username.isEmpty()) {
+        String name = request.getParameter("name");
+        if (name == null || name.isEmpty()) {
             ArrayList<String> nameErrors = new ArrayList<>();
-            if (errors.containsKey("username")) {
+            if (errors.containsKey("name")) {
                 nameErrors = errors.get("name");
             }
-            nameErrors.add("Username is required!");
-            errors.put("username", nameErrors);
-        } else if (username.length() < 5 || username.length() > 20) {
+            nameErrors.add("Name is required!");
+            errors.put("name", nameErrors);
+        } else if (name.length() < 5 || name.length() > 20) {
             ArrayList<String> nameErrors = new ArrayList<>();
-            if (errors.containsKey("username")) {
-                nameErrors = errors.get("username");
+            if (errors.containsKey("name")) {
+                nameErrors = errors.get("name");
             }
-            nameErrors.add("Username must be 5 to 20 character!");
-            errors.put("username", nameErrors);
+            nameErrors.add("Name must be 5 to 20 character!");
+            errors.put("name", nameErrors);
         }
 
-        String strAge = request.getParameter("age");
-        if (strAge == null || strAge.isEmpty()) {
-            ArrayList<String> ageErrors = new ArrayList<>();
-            if (errors.containsKey("age")) {
-                ageErrors = errors.get("age");
+        String strPrice = request.getParameter("price");
+        if (strPrice == null || strPrice.isEmpty()) {
+            ArrayList<String> priceErrors = new ArrayList<>();
+            if (errors.containsKey("price")) {
+                priceErrors = errors.get("price");
             }
-            ageErrors.add("Age is required!");
-            errors.put("age", ageErrors);
+            priceErrors.add("Price is required!");
+            errors.put("price", priceErrors);
+        }
+
+        String strQuantity = request.getParameter("quantity");
+        if (strQuantity == null || strQuantity.isEmpty()) {
+            ArrayList<String> quantityErrors = new ArrayList<>();
+            if (errors.containsKey("quantity")) {
+                quantityErrors = errors.get("quantity");
+            }
+            quantityErrors.add("Quantity is required!");
+            errors.put("quantity", quantityErrors);
         }
         try {
-            int age = Integer.parseInt(strAge);
+            int price = Integer.parseInt(strPrice);
+            int quantity = Integer.parseInt(strQuantity);
         } catch (NumberFormatException ex) {
-            ArrayList<String> ageErrors = new ArrayList<>();
-            if (errors.containsKey("age")) {
-                ageErrors = errors.get("age");
+            ArrayList<String> priceErrors = new ArrayList<>();
+            ArrayList<String> quantityErrors = new ArrayList<>();
+            if (errors.containsKey("price")) {
+                priceErrors = errors.get("price");
             }
-            ageErrors.add("Age must be a number!");
-            errors.put("age", ageErrors);
+            if(errors.containsKey("quantity")) {
+                quantityErrors = errors.get("quantity");
+            }
+
+            priceErrors.add("Price must be a number!");
+            quantityErrors.add("Quantity must be a number!");
+            errors.put("price", priceErrors);
+            errors.put("quantity", quantityErrors);
         }
         return errors;
     }
