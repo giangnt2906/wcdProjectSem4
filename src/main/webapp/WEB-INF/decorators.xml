@@ -4,14 +4,14 @@
         <pattern>/api*</pattern>
     </excludes>
     <decorator name="admin-theme" page="admin-theme.jsp">
-        <pattern>/product/*</pattern>
-        <pattern>/category/*</pattern>
         <pattern>/backend/*</pattern>
+        <pattern>/backend/product/*</pattern>
+        <pattern>/backend/category/*</pattern>
     </decorator>
     <decorator name="basic-theme" page="basic-theme.jsp">
         <pattern>/basic/*</pattern>
-        <pattern>/home.jsp</pattern>
-        <pattern>/product.jsp</pattern>
+        <pattern>/</pattern>
+        <pattern>/productDetail</pattern>
         <pattern>/store.jsp</pattern>
         <pattern>/blank.jsp</pattern>
         <pattern>/checkout.jsp</pattern>

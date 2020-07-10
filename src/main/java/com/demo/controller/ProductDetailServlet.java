@@ -9,23 +9,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
 
-@WebServlet(name = "HomeClientServlet", urlPatterns = "/")
-public class HomeClientServlet extends HttpServlet {
+@WebServlet(name = "ProductDetailServlet",urlPatterns = "/productDetail")
+public class ProductDetailServlet extends HttpServlet {
     ProductDao dao = new ProductDao();
-
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setAttribute("products", getListProduct());
-        request.getRequestDispatcher("home.jsp").forward(request,response);
-    }
+        request.setAttribute("id", request.getParameter("id"));
+        int id = Integer.parseInt(request.getParameter("id"));
 
-    protected List<Product> getListProduct(){
-        List<Product> products = dao.getAllProduct();
-        return products;
+
+        request.getRequestDispatcher("product.jsp").forward(request,response);
     }
 }
