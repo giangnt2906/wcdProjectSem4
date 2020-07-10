@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3307
--- Generation Time: Jul 08, 2020 at 05:34 AM
+-- Generation Time: Jul 10, 2020 at 04:29 AM
 -- Server version: 5.6.34-log
 -- PHP Version: 7.1.5
 
@@ -91,7 +91,9 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`id`, `name`, `quantity`, `price`, `categoryId`, `image_url`) VALUES
-(25, 'Iphone Xmas', 10, 1000, 3, ',https://res.cloudinary.com/debutwyfp/image/upload/v1594185253/thumb_11-ProMAX_2-1_gddpqc.jpg,https://res.cloudinary.com/debutwyfp/image/upload/v1594185253/iphone-xr-64gb-quoc-te-moi-95-99_nwqts2.jpg');
+(25, 'Iphone Xmas', 10, 1000, 3, ',https://res.cloudinary.com/debutwyfp/image/upload/v1594185253/thumb_11-ProMAX_2-1_gddpqc.jpg,https://res.cloudinary.com/debutwyfp/image/upload/v1594185253/iphone-xr-64gb-quoc-te-moi-95-99_nwqts2.jpg'),
+(27, 'Samsung T5', 20, 9999, 2, ',https://res.cloudinary.com/debutwyfp/image/upload/v1594355212/thumb_11-ProMAX_2-1_ujqqw2.jpg'),
+(28, 'Iphone Xmas', 10, 5000, 17, ',https://res.cloudinary.com/debutwyfp/image/upload/v1594355245/thumb_11-ProMAX_2-1_fcltha.jpg');
 
 -- --------------------------------------------------------
 
@@ -177,7 +179,7 @@ ALTER TABLE `user_table`
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT for table `gender_table`
 --
@@ -187,7 +189,7 @@ ALTER TABLE `gender_table`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 --
 -- AUTO_INCREMENT for table `roles_table`
 --

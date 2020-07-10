@@ -2,7 +2,7 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="${pageContext.request.contextPath}/home">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="${pageContext.request.contextPath}/backend/home">
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-laugh-wink"></i>
         </div>
@@ -14,7 +14,7 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item active">
-        <a class="nav-link" href="${pageContext.request.contextPath}/home">
+        <a class="nav-link" href="${pageContext.request.contextPath}/backend/home">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>
@@ -36,8 +36,8 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Category Pages:</h6>
-                <a class="collapse-item" href="${pageContext.request.contextPath}/category/categoryList">List</a>
-                <a class="collapse-item" href="${pageContext.request.contextPath}/category/categoryAdd">Add</a>
+                <a class="collapse-item" href="${pageContext.request.contextPath}/backend/category/categoryList">List</a>
+                <a class="collapse-item" href="${pageContext.request.contextPath}/backend/category/categoryAdd">Add</a>
             </div>
         </div>
     </li>
@@ -51,8 +51,8 @@
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Product Pages:</h6>
-                <a class="collapse-item" href="${pageContext.request.contextPath}/product/productList">List</a>
-                <a class="collapse-item" href="${pageContext.request.contextPath}/product/productAdd">Add</a>
+                <a class="collapse-item" href="${pageContext.request.contextPath}/backend/product/productList">List</a>
+                <a class="collapse-item" href="${pageContext.request.contextPath}/backend/product/productAdd">Add</a>
             </div>
         </div>
     </li>
@@ -67,19 +67,19 @@
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
-        <a class="nav-link" href="${pageContext.request.contextPath}/employeeTask">
+        <a class="nav-link" href="${pageContext.request.contextPath}/backend/employeeTask">
             <i class="fas fa-fw fa-child"></i>
             <span>Employee Task</span>
         </a>
-        <a class="nav-link" href="${pageContext.request.contextPath}/managerTask">
+        <a class="nav-link" href="${pageContext.request.contextPath}/backend/managerTask">
             <i class="fas fa-fw fa-street-view"></i>
             <span>Manager Task</span>
         </a>
-        <a class="nav-link" href="${pageContext.request.contextPath}/userAdd">
+        <a class="nav-link" href="${pageContext.request.contextPath}/backend/userAdd">
             <i class="fas fa-fw fa-user-plus"></i>
             <span>Create User</span>
         </a>
-        <a class="nav-link" href="${pageContext.request.contextPath}/userManage">
+        <a class="nav-link" href="${pageContext.request.contextPath}/backend/userManage">
             <i class="fas fa-fw fa-users"></i>
             <span>List User</span>
         </a>

@@ -42,17 +42,17 @@
         </li>
 
         <div class="d-sm-flex align-items-center">
-            <a class="nav-link" href="${pageContext.request.contextPath}/login" id="">
+            <a class="nav-link" href="${pageContext.request.contextPath}/backend/login" id="">
                 <i class="fas fa-sign-in fa-fw"></i>
                 <span class="">Sign In</span>
             </a>
 
-            <a class="nav-link" href="${pageContext.request.contextPath}/logout">
+            <a class="nav-link" href="${pageContext.request.contextPath}/backend/logout">
                 <i class="fas fa-sign-in fa-fw"></i>
                 <span class="">Sign Out</span>
             </a>
 
-            <a class="nav-link" href="${pageContext.request.contextPath}/userInfo">
+            <a class="nav-link" href="${pageContext.request.contextPath}/backend/userInfo">
                 <i class="fas fa-sign-in fa-fw"></i>
                 <span class="">Profile</span>
             </a>

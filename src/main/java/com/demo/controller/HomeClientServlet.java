@@ -14,6 +14,7 @@ import java.util.List;
 @WebServlet(name = "HomeClientServlet", urlPatterns = "/")
 public class HomeClientServlet extends HttpServlet {
     ProductDao dao = new ProductDao();
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
